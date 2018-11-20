@@ -1,0 +1,45 @@
+.header__container {
+  width: 100%;
+  background-color: $colorBlueDark;
+}
+
+.header {
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  min-width: $widthMin;
+  max-width: $widthMax;
+  margin: 0 auto;
+  height: 40px;
+  // background-color: red;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.home-btn {
+  width: 16px;
+  height: 16px;
+  padding: 7px 14px;
+  border-radius: 4px;
+  background-color: $colorBlue;
+  background-image: url(../img/home-btn.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center;
+}
+
+.menu {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+  // background-color: orange;
+}
+
+.menu__item {
+  margin: 0 15px;
+}

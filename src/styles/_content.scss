@@ -1,0 +1,128 @@
+.content__container {
+  width: 100%;
+  background-color: $colorBlue;
+}
+
+.content {
+  position: relative;
+  min-width: $widthMin;
+  max-width: $widthMax;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.content__article {
+  width: 600px;
+}
+
+.content__steps {
+  display: flex;
+  margin: 20px 0;
+  counter-reset: steps;
+}
+
+.content__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+
+  &:before {
+    position: absolute;
+    left: calc(50% - 120px);
+    top: 20px;
+    height: 4px;
+    width: 100px;
+    content: '';
+    transform: translate(0, -50%);
+    background-color: $colorGray;
+  }
+
+  &:first-child:before {
+    width: 0;
+    height: 0;
+  }
+
+  &:after {
+    position: absolute;
+    left: calc(50% + 20px);
+    top: 20px;
+    height: 4px;
+    width: 100px;
+    content: '';
+    transform: translate(0, -50%);
+    background-color: $colorGray;
+  }
+
+  &:last-child:after {
+    width: 0;
+    height: 0;
+  }
+}
+
+.content__step__circle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: radial-gradient(transparent 0%, transparent 40%, $colorGold 40%, $colorGold 45%, transparent 45%, transparent 60%, $colorGold 60%, $colorGold 100%);
+  cursor: pointer;
+
+  &:before {
+    counter-increment: steps;
+    content: counter(steps);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    content: '';
+    background-image: radial-gradient($colorGold 0%, $colorGold 20%, $colorWhite 20%, $colorWhite 40%, $colorGold 40%, $colorGold 45%, $colorWhite 45%, $colorWhite 60%, $colorGold 60%, $colorGold 100%);
+    opacity: 0;
+    transition: all 120ms linear;
+  }
+
+  &:hover:after {
+    opacity: 1;
+  }
+}
+
+.content__step__text {
+  margin-top: 10px;
+
+  &:hover {
+    color: $colorGold;
+  }
+}
+
+.content__return {
+  position: absolute;
+  right: 0;
+  top: 20px;
+  display: inline-block;
+  margin: 20px;
+  text-transform: uppercase;
+  color: $colorGold;
+  cursor: pointer;
+
+  &:after {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    content:'';
+    background-image: url(../img/return-btn.svg);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+  }
+}

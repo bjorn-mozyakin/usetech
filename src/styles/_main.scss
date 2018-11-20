@@ -1,0 +1,30 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: $colorWhite;
+}
+
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: $colorWhite;
+}
+a:hover {
+  text-decoration: none;
+  color: darken($colorWhite, 20%);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 0;
+}
