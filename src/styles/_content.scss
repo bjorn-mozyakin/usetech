@@ -1,21 +1,21 @@
 .content__container {
   width: 100%;
+  height: calc(100% - #{$navHeight});
+  min-height: calc(100% - #{$navHeight});
   background: linear-gradient(90deg, $bgColorDark, $bgColor);
-  &:before {
-    content: '';
-  }
 }
 
 .content {
   position: relative;
   min-width: $widthMin;
   max-width: $widthMax;
+  min-height: calc(100% - #{$navHeight});
   margin: 0 auto;
   padding: 20px 0;
   background-image: url(../img/background.svg);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 300%;
+  background-position: left top;
+  background-size: 50%;
 }
 
 .content__article {
@@ -30,10 +30,7 @@
 
 .content__step {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 80px;
+  padding: 0 $stepCircleBeam;
 
   &:first-child {
     padding-left: 0;
@@ -43,12 +40,13 @@
     padding-right: 0;
   }
 
+  // Лучи слева от кружков (шагов)
   &:before {
     position: absolute;
-    left: calc(50% - 100px);
-    top: 20px;
+    left: calc(50% - #{$stepCircleBeam} - #{$stepCircleRadius});
+    top: $stepCircleRadius;
     height: 4px;
-    width: 80px;
+    width: $stepCircleBeam;
     content: '';
     transform: translate(0, -50%);
     background-color: $colorGray;
@@ -63,19 +61,20 @@
     left: 0;
   }
 
+  // Лучи справа от кружков (шагов)
   &:after {
     position: absolute;
-    left: calc(50% + 20px);
-    top: 20px;
+    left: calc(50% + #{$stepCircleRadius});
+    top: $stepCircleRadius;
     height: 4px;
-    width: 80px;
+    width: $stepCircleBeam;
     content: '';
     transform: translate(0, -50%);
     background-color: $colorGray;
   }
 
   &:first-child:after {
-    left: calc(40px);
+    left: $stepCircleRadius * 2;
   }
 
   &:last-child:after {
@@ -86,8 +85,8 @@
 
 .content__step__circle {
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: $stepCircleRadius * 2;
+  height: $stepCircleRadius * 2;
   border-radius: 50%;
   background-image: radial-gradient(
     transparent 0%, transparent 50%,
@@ -111,8 +110,8 @@
     position: absolute;
     left: 0;
     top: 0;
-    width: 40px;
-    height: 40px;
+    width: $stepCircleRadius * 2;
+    height: $stepCircleRadius * 2;
     border-radius: 50%;
     content: '';
     background-image: radial-gradient(
@@ -145,11 +144,11 @@
 }
 
 .content__step:first-child .content__step__text{
-  left: 20px;
+  left: $stepCircleRadius;
 }
 
 .content__step:last-child .content__step__text{
-  left: calc(100% - 20px);
+  left: calc(100% -  #{$stepCircleRadius});
 }
 
 .content__return {
@@ -161,6 +160,8 @@
   text-transform: uppercase;
   color: $colorGold;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 120ms linear;
 
   &:after {
     display: inline-block;
@@ -172,5 +173,9 @@
     background-repeat: no-repeat;
     background-size: 16px;
     background-position: center;
+  }
+
+  &:hover {
+    opacity:  0.85;
   }
 }
