@@ -365,7 +365,9 @@ a,
 a:active,
 a:visited {
   text-decoration: none;
-  color: #fff; }
+  color: #fff;
+  -webkit-transition: color 200ms linear;
+  transition: color 200ms linear; }
 
 a:hover {
   text-decoration: none;
@@ -396,7 +398,7 @@ h1 {
   min-width: 1200px;
   max-width: 1260px;
   margin: 0 auto;
-  height: 40px; }
+  height: 50px; }
 
 .nav {
   display: -webkit-box;
@@ -416,7 +418,11 @@ h1 {
   background-image: url(../img/home-btn.svg);
   background-repeat: no-repeat;
   background-size: 16px;
-  background-position: center; }
+  background-position: center;
+  -webkit-transition: background 200ms linear;
+  transition: background 200ms linear; }
+  .home-btn:hover {
+    background-color: #173c78; }
 
 .menu {
   -webkit-box-flex: 1;
@@ -435,14 +441,21 @@ h1 {
 
 .content__container {
   width: 100%;
-  background-color: #133163; }
+  background: -webkit-gradient(linear, left top, right top, from(#0a427d), to(#0086ac));
+  background: linear-gradient(90deg, #0a427d, #0086ac); }
+  .content__container:before {
+    content: ''; }
 
 .content {
   position: relative;
   min-width: 1200px;
   max-width: 1260px;
   margin: 0 auto;
-  padding: 20px 0; }
+  padding: 20px 0;
+  background-image: url(../img/background.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 300%; }
 
 .content__article {
   width: 600px; }
@@ -466,13 +479,17 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 200px; }
+  padding: 0 80px; }
+  .content__step:first-child {
+    padding-left: 0; }
+  .content__step:last-child {
+    padding-right: 0; }
   .content__step:before {
     position: absolute;
-    left: calc(50% - 120px);
+    left: calc(50% - 100px);
     top: 20px;
     height: 4px;
-    width: 100px;
+    width: 80px;
     content: '';
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
@@ -480,16 +497,20 @@ h1 {
   .content__step:first-child:before {
     width: 0;
     height: 0; }
+  .content__step:last-child:before {
+    left: 0; }
   .content__step:after {
     position: absolute;
     left: calc(50% + 20px);
     top: 20px;
     height: 4px;
-    width: 100px;
+    width: 80px;
     content: '';
     -webkit-transform: translate(0, -50%);
             transform: translate(0, -50%);
     background-color: #808080; }
+  .content__step:first-child:after {
+    left: calc(40px); }
   .content__step:last-child:after {
     width: 0;
     height: 0; }
@@ -499,8 +520,10 @@ h1 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-image: radial-gradient(transparent 0%, transparent 40%, #a89967 40%, #a89967 45%, transparent 45%, transparent 60%, #a89967 60%, #a89967 100%);
-  cursor: pointer; }
+  background-image: radial-gradient(transparent 0%, transparent 50%, #8c7e50 50%, #8c7e50 55%, transparent 55%, transparent 65%, #a89967 65%, #a89967 100%);
+  cursor: pointer;
+  -webkit-transition: all 120ms linear;
+  transition: all 120ms linear; }
   .content__step__circle:before {
     counter-increment: steps;
     content: counter(steps);
@@ -517,17 +540,29 @@ h1 {
     height: 40px;
     border-radius: 50%;
     content: '';
-    background-image: radial-gradient(#a89967 0%, #a89967 20%, #fff 20%, #fff 40%, #a89967 40%, #a89967 45%, #fff 45%, #fff 60%, #a89967 60%, #a89967 100%);
+    background-image: radial-gradient(#a89967 0%, #a89967 20%, #fff 20%, #fff 50%, #a89967 50%, #a89967 55%, #fff 55%, #fff 65%, #a89967 65%, #a89967 100%);
     opacity: 0;
     -webkit-transition: all 120ms linear;
     transition: all 120ms linear; }
   .content__step__circle:hover:after {
     opacity: 1; }
+  .content__step__circle:hover {
+    color: #a89967; }
 
 .content__step__text {
-  margin-top: 10px; }
-  .content__step__text:hover {
-    color: #a89967; }
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-top: 10px;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+  white-space: nowrap; }
+
+.content__step:first-child .content__step__text {
+  left: 20px; }
+
+.content__step:last-child .content__step__text {
+  left: calc(100% - 20px); }
 
 .content__return {
   position: absolute;

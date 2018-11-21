@@ -1,6 +1,9 @@
 .content__container {
   width: 100%;
-  background-color: $colorBlue;
+  background: linear-gradient(90deg, $bgColorDark, $bgColor);
+  &:before {
+    content: '';
+  }
 }
 
 .content {
@@ -9,6 +12,10 @@
   max-width: $widthMax;
   margin: 0 auto;
   padding: 20px 0;
+  background-image: url(../img/background.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 300%;
 }
 
 .content__article {
@@ -26,14 +33,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  padding: 0 80px;
+
+  &:first-child {
+    padding-left: 0;
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
 
   &:before {
     position: absolute;
-    left: calc(50% - 120px);
+    left: calc(50% - 100px);
     top: 20px;
     height: 4px;
-    width: 100px;
+    width: 80px;
     content: '';
     transform: translate(0, -50%);
     background-color: $colorGray;
@@ -44,15 +59,23 @@
     height: 0;
   }
 
+  &:last-child:before {
+    left: 0;
+  }
+
   &:after {
     position: absolute;
     left: calc(50% + 20px);
     top: 20px;
     height: 4px;
-    width: 100px;
+    width: 80px;
     content: '';
     transform: translate(0, -50%);
     background-color: $colorGray;
+  }
+
+  &:first-child:after {
+    left: calc(40px);
   }
 
   &:last-child:after {
@@ -66,8 +89,14 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-image: radial-gradient(transparent 0%, transparent 40%, $colorGold 40%, $colorGold 45%, transparent 45%, transparent 60%, $colorGold 60%, $colorGold 100%);
+  background-image: radial-gradient(
+    transparent 0%, transparent 50%,
+    darken($colorGold, 10%) 50%, darken($colorGold, 10%) 55%,
+    transparent 55%, transparent 65%,
+    $colorGold 65%, $colorGold 100%
+  );
   cursor: pointer;
+  transition: all 120ms linear;
 
   &:before {
     counter-increment: steps;
@@ -86,7 +115,13 @@
     height: 40px;
     border-radius: 50%;
     content: '';
-    background-image: radial-gradient($colorGold 0%, $colorGold 20%, $colorWhite 20%, $colorWhite 40%, $colorGold 40%, $colorGold 45%, $colorWhite 45%, $colorWhite 60%, $colorGold 60%, $colorGold 100%);
+    background-image: radial-gradient(
+      $colorGold 0%, $colorGold 20%,
+      $colorWhite 20%, $colorWhite 50%,
+      $colorGold 50%, $colorGold 55%,
+      $colorWhite 55%, $colorWhite 65%,
+      $colorGold 65%, $colorGold 100%
+    );
     opacity: 0;
     transition: all 120ms linear;
   }
@@ -94,14 +129,27 @@
   &:hover:after {
     opacity: 1;
   }
-}
-
-.content__step__text {
-  margin-top: 10px;
 
   &:hover {
     color: $colorGold;
   }
+}
+
+.content__step__text {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-top: 10px;
+  transform: translate(-50%, 0%);
+  white-space: nowrap;
+}
+
+.content__step:first-child .content__step__text{
+  left: 20px;
+}
+
+.content__step:last-child .content__step__text{
+  left: calc(100% - 20px);
 }
 
 .content__return {

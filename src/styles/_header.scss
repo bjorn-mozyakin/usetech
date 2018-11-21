@@ -5,13 +5,11 @@
 
 .header {
   display: flex;
-  // justify-content: space-between;
   align-items: center;
   min-width: $widthMin;
   max-width: $widthMax;
   margin: 0 auto;
-  height: 40px;
-  // background-color: red;
+  height: 50px;
 }
 
 .nav {
@@ -30,6 +28,11 @@
   background-repeat: no-repeat;
   background-size: 16px;
   background-position: center;
+  transition: background 200ms linear;
+
+  &:hover {
+    background-color: lighten($colorBlue, 5%);
+  }
 }
 
 .menu {
@@ -37,7 +40,6 @@
   display: flex;
   justify-content: space-between;
   text-transform: uppercase;
-  // background-color: orange;
 }
 
 .menu__item {
